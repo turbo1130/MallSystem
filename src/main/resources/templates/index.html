@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录-蜀南调味品商城后台管理系统</title>
+    <link rel="stylesheet" href="/asserts/css/bootstrap.min.css">
+</head>
+<style>
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+        }
+    }
+</style>
+<link href="/asserts/css/index.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+    <div  style="position: absolute; top: 5px; right: 10px;">
+        <a class="findUser" href="findUser.html" th:href="@{/findUser}">找回密码</a>
+    </div>
+    <form class="form-signin" action="goods.html" th:action="@{/user/login}" method="post">
+        <img class="mb-4" src="/asserts/images/administrator.png" alt="administrator" width="75" height="75">
+        <p style="color:red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+        <label for="inputText" class="sr-only">用户名：</label>
+        <input type="text" name="sysName" id="inputText" class="form-control" placeholder="用户名">
+        <label for="inputPassword" class="sr-only">密码：</label>
+        <input type="password" name="sysPwd" id="inputPassword" class="form-control" placeholder="密码">
+        <button class="mt-4 mb-2 btn btn-primary btn-block" type="submit">登录</button>
+        <p class="mt-4 text-muted">蜀南调味品商城后台管理系统</p>
+        <p class="mb-3 text-muted">&copy; 2019</p>
+    </form>
+</body>
+
+</html>

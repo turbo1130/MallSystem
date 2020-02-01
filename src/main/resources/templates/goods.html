@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>蜀南调味品商城后台管理系统</title>
+    <link rel="stylesheet" href="/asserts/css/bootstrap.min.css">
+    <link href="/asserts/css/bar.css" rel="stylesheet">
+    <link href="/asserts/css/popup.css" rel="stylesheet">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+        .page-link:focus{
+            box-shadow: none;
+            outline: none;
+        }
+        
+        
+    </style>
+
+</head>
+
+<body>
+    <div th:replace="~{commons/bar::topbar}"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div th:replace="~{commons/bar::sidebar(activeUri='goods')}"></div>
+            
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2">
+                    <h1 class="h2">商品管理</h1>
+                </div>
+                <div class="float-left">
+                    <a class="btn btn-success mb-2" th:href="@{/addGood}">添加商品</a>
+                </div>
+                <form action="" method="get" th:action="@{/goodSearch}">
+	                <div class="input-group mb-2 float-right" style="width: 400px;">
+	                    <div class="input-group-prepend">
+	                        <select class="form-control btn outline-secondary" id="sel1" name="sType">
+	                            <option>名称</option>
+	                            <option>类别</option>
+	                        </select>
+	                    </div>
+	                    <input type="text" class="form-control outline-secondary" placeholder="搜索" name="sContent">
+	                </div>
+                </form>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>名称</th>
+                                <th>数量</th>
+                                <th>价格</th>
+                                <th>类别</th>
+                                <th>入库时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="good:${goods}">
+                                <td scope="row" th:text="${good.gdID}">001</td>
+                                <td th:text="${good.gdName}">研制黄瓜</td>
+                                <td th:text="${good.gdCount}">1000</td>
+                                <td th:text="${good.gdPrice}">15元/袋</td>
+                                <td th:text="${good.gdClass}">泡菜类 - 韩国泡菜</td>
+                                <td th:text="${#dates.format(good.gdTime, 'yyyy-MM-dd')}">2019-12-28</td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm" href="javascript:;" th:href="@{/good/}+${good.gdID}">编辑</a>
+                                    <button th:attr="del_uri=@{/good/}+${good.gdID}" class="btn btn-danger btn-sm btnPopup">删除</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div style="padding-left: 45%;" th:if="${not #strings.isEmpty(pageSignalForGood)}">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#" th:href="@{/goodsPre}"><i data-feather="arrow-left"></i></a></li>
+                        <li class="page-item"><a class="page-link" href="#" th:href="@{/goodsAppend}"><i data-feather="arrow-right"></i></a></li>
+                    </ul>
+                </div>
+            </main>
+            <form id="delGood" method="post"></form>
+        </div>
+    </div>
+    
+    <div class="background_div"></div>
+    <div id="popup" class="card">
+        <div class="card-header">
+            <div class="float-left"><h6> <i data-feather="alert-circle"></i> 提示</h6></div> 
+        </div>
+        <div class="card-body">
+            <div class="ml-2">
+                <h6>删除后不可恢复，请确定是否删除该条记录？</h6>
+            </div>
+        </div> 
+        <div class="card-footer mt-0 pt-0">
+            <button class="btn btn-danger btn-sm btnDel float-right ml-2">确定</button>
+            <button id="cancel" class="btn btn-primary btn-sm float-right">取消</button>
+        </div>
+    </div>
+    
+    <script src="https://unpkg.com/feather-icons@4.25.0/dist/feather.min.js"></script>
+    <script src="/asserts/js/jquery-3.4.1.min.js"></script>
+    <div th:replace="~{commons/bar::scri}"></div>
+    <script>
+    	var del_uri;
+    	$(".btnPopup").click(function(){
+    		{
+	    		del_uri = $(this).attr("del_uri");
+	    	}
+    	})
+	    $(".btnDel").click(function(){
+			$("#delGood").attr("action",del_uri).submit().removeAttr("action");
+			return false;
+		})
+    </script>
+</body>
+
+</html>

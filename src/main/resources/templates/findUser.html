@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>找回密码-蜀南调味品商城后台管理系统</title>
+    <link rel="stylesheet" href="/asserts/css/bootstrap.min.css">
+</head>
+<style>
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+        }
+    }
+</style>
+<link href="/asserts/css/index.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+    <form class="form-signin" action="index.html" th:action="@{/findPwd}" method="post">
+        <div class="pt-3 pb-2 mb-3">
+            <h1 class="h2">安全中心</h1>
+        </div>
+        <p style="color:red" th:text="${findResultMsg}" th:if="${not #strings.isEmpty(findResultMsg)}"></p>
+        <div class="form-group mb-4">
+            <input type="text" class="form-control" id="eProblem" name="sysName" placeholder="请输入用户名">
+        </div>
+        <div class="form-group mb-4">
+            <select class="form-control" id="eProblem" name="sysEncrypted">
+                <option>您的名字是什么？</option>
+                <option>您父亲的名字是什么？</option>
+                <option>您母亲的名字是什么？</option>
+            </select>
+        </div>
+        <div class="form-group mb-4">
+            <input type="text" class="form-control" id="eAnswer" name="sysAnswer" placeholder="请输入回答">
+        </div>
+        <label style="display: block;"></label>
+        <p style="font-weight:bold" th:text="${findPwd}" th:if="${not #strings.isEmpty(findPwd)}"></p>
+        <button class="mt-4 mb-2 btn find" type="submit">找回密码</button>
+        <a class="mt-4 mb-2 btn find" href="javascript:;" th:href="@{/}">登录</a>
+        <p class="mt-4 text-muted">蜀南调味品商城后台管理系统</p>
+        <p class="mb-3 text-muted">&copy; 2019</p>
+    </form>
+</body>
+
+</html>

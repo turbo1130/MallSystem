@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>蜀南调味品商城后台管理系统</title>
+    <link rel="stylesheet" href="/asserts/css/bootstrap.min.css">
+    <link href="/asserts/css/bar.css" rel="stylesheet">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div th:replace="~{commons/bar::topbar}"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div th:replace="~{commons/bar::sidebar}"></div>
+            
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div class="mt-5 ml-5">
+                    <h1>抱歉！页面无法访问......</h1>
+                    <h6><small style="color: #cccccc;">可能因为：</small></h6>
+                    <h6>网址有错误> <span><small style="color: #cccccc;">请检查地址是否完整或存在多余字符</small></span><br>
+                        网址已失效> <span><small style="color: #cccccc;">可能页面已删除</small></span><br>提交格式错误> <span><small style="color: #cccccc;">可能没有按照指定格式提交信息</small></span></h6>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="https://unpkg.com/feather-icons@4.25.0/dist/feather.min.js"></script>
+    <script src="/asserts/js/jquery-3.4.1.min.js"></script>
+    <div th:replace="~{commons/bar::scri}"></div>
+</body>
+
+</html>

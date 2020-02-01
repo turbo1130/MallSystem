@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>蜀南调味品商城后台管理系统</title>
+    <link rel="stylesheet" href="/asserts/css/bootstrap.min.css">
+    <link href="/asserts/css/bar.css" rel="stylesheet">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .container{
+            width: 60%;
+            margin-left: 0px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div th:replace="~{commons/bar::topbar}"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div th:replace="~{commons/bar::sidebar(activeUri='goods')}"></div>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2">
+                    <h1 class="h2">编辑商品</h1>
+                </div>
+                <div class="container mb-4">
+                    <form action="" th:action="@{/editGood}" method="post">
+                        <div class="form-group">
+                            <label for="Id">#</label>
+                            <input name="gdID" id="Id" type="number" class="form-control" value="001" th:value="${good.gdID}"  readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="gname">名称</label>
+                            <input name="gdName" id="gname" type="text" class="form-control" value="研制黄瓜" th:value="${good.gdName}">
+                        </div>
+                        <div class="form-group">
+                            <label for="count">数量</label>
+                            <input name="gdCount" id="count" type="number" class="form-control" value="1000" th:value="${good.gdCount}">
+                        </div>
+                        <div class="form-group">
+                            <label for="price">价格</label>
+                            <input name="gdPrice" id="price" type="text" class="form-control" value="15元/袋" th:value="${good.gdPrice}">
+                        </div>
+                        <div class="form-group">
+                            <label for="gclass">类别</label>
+                            <select class="form-control" name="gdClass" id="gclass">
+                           		<option th:text="${good.gdClass}"></option>
+                                <option>泡菜类-贡盐泡菜</option>
+                                <option>泡菜类-韩国泡菜</option>
+                                <option>花椒类-青花椒</option>
+                                <option>花椒类-红花椒</option>
+                                <option>酱油类</option>
+                                <option>食用油类</option>
+                                <option>其他类</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">入库时间</label>
+                            <input name="gdTime" id="time" type="text" class="form-control" placeholder="2020/01/01" th:value="${ #dates.format(good.gdTime, 'yyyy/MM/dd')}">
+                      </div>
+                      <button type="submit" class="btn btn-primary">提交</button>
+                  </form>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="https://unpkg.com/feather-icons@4.25.0/dist/feather.min.js"></script>
+    <script src="/asserts/js/jquery-3.4.1.min.js"></script>
+    <div th:replace="~{commons/bar::scri}"></div>
+</body>
+
+</html>

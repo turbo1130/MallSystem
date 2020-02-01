@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>蜀南调味品商城后台管理系统</title>
+    <link rel="stylesheet" href="/asserts/css/bootstrap.min.css">
+    <link href="/asserts/css/bar.css" rel="stylesheet">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+        
+        .activeForA{
+        	color:black;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div th:replace="~{commons/bar::topbar}"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div th:replace="~{commons/bar::sidebar(activeUri='classes')}"></div>
+            
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div class=" pt-3 pb-2 mb-2 float-left">
+                    <h1 class="h2 float-left">分类管理</h1>
+                    <div class="mt-3 float-left ml-4"><h6 th:text="${classMsg}">泡菜类 / 韩国泡菜</h6></div>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>名称</th>
+                                <th>数量</th>
+                                <th>价格</th>
+                                <th>类别</th>
+                                <th>入库时间</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="class:${classes}">
+                                    <td scope="row" th:text="${class.gdID}">001</td>
+                                    <td th:text="${class.gdName}">研制黄瓜</td>
+                                    <td th:text="${class.gdCount}">1000</td>
+                                    <td th:text="${class.gdPrice}">15元/袋</td>
+                                    <td th:text="${class.gdClass}">泡菜类 - 韩国泡菜</td>
+                                    <td th:text="${#dates.format(class.gdTime, 'yyyy-MM-dd')}">2019-12-28</td>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm" th:href="@{/class/}+${class.gdID}">编辑</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="https://unpkg.com/feather-icons@4.25.0/dist/feather.min.js"></script>
+    <script src="/asserts/js/jquery-3.4.1.min.js"></script>
+    <div th:replace="~{commons/bar::scri}"></div>
+</body>
+
+</html>

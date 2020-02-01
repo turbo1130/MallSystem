@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>蜀南调味品商城后台管理系统</title>
+    <link rel="stylesheet" href="/asserts/css/bootstrap.min.css">
+    <link href="/asserts/css/bar.css" rel="stylesheet">
+    <link href="/asserts/css/popup.css" rel="stylesheet">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .container {
+            width: 60%;
+            margin-left: 0px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div th:replace="~{commons/bar::topbar}"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div th:replace="~{commons/bar::sidebar(activeUri='leaveAMsg')}"></div>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2">
+                    <h1 class="h2">客户留言</h1>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>客户</th>
+                                <th>留言</th>
+                                <th>时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="forMsg:${forMsges}">
+                                <td scope="row" style="width: 10%;" th:text="${forMsg.msgCustomer}">yikeX</td>
+                                <td th:text="${forMsg.msgContent}">这是我的留言这是我的留言这是我的留言这是我的留言这是我的留言</td>
+                                <td style="width: 10%;" th:text="${#dates.format(forMsg.msgTime,'yyyy-MM-dd')}">2019-12-29</td>
+                                <td style="width: 10%;">
+                                    <button class="btn btn-danger btn-sm btnPopup" th:attr="del_msg=@{/delMsg/}+${forMsg.msgCustomer}">删除</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <form id="delmsg" method="post"></form>
+            </main>
+        </div>
+    </div>
+    
+    <div class="background_div"></div>
+    <div id="popup" class="card">
+        <div class="card-header">
+            <div class="float-left"><h6> <i data-feather="alert-circle"></i> 提示</h6></div> 
+        </div>
+        <div class="card-body">
+            <div class="ml-2">
+                <h6>删除后不可恢复，请确定是否删除该条留言？</h6>
+            </div>
+        </div> 
+        <div class="card-footer mt-0 pt-0">
+            <button class="btn btn-danger btn-sm btnDel float-right ml-2">确定</button>
+            <button id="cancel" class="btn btn-primary btn-sm float-right">取消</button>
+        </div>
+    </div>
+    
+    <script src="https://unpkg.com/feather-icons@4.25.0/dist/feather.min.js"></script>
+    <script src="/asserts/js/jquery-3.4.1.min.js"></script>
+    <div th:replace="~{commons/bar::scri}"></div>
+    <script>
+	    var del_uri;
+		$(".btnPopup").click(function(){
+			{
+	    		del_uri = $(this).attr("del_msg");
+	    	}
+		})
+	    $(".btnDel").click(function(){
+			$("#delmsg").attr("action",del_uri).submit().removeAttr("action");
+			return false;
+		})
+    </script>
+</body>
+
+</html>

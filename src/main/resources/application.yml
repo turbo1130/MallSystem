@@ -1,0 +1,8 @@
+spring:
+  datasource:
+#    数据源基本配置
+    url: jdbc:mysql://localhost:3306/condimentssys?useSSL=false&serverTimezone=UTC&characterEncoding=utf8&useUnicode=true
+    username: root
+    password: 113011
+    driver-class-name: com.mysql.cj.jdbc.Driver
+

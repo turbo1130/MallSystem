@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>蜀南调味品商城后台管理系统</title>
+    <link rel="stylesheet" href="/asserts/css/bootstrap.min.css">
+    <link href="/asserts/css/bar.css" rel="stylesheet">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .container {
+            width: 60%;
+            margin-left: 0px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div th:replace="~{commons/bar::topbar}"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div th:replace="~{commons/bar::sidebar(activeUri='enc')}"></div>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-4">
+                    <h1 class="h2">密保重置</h1>
+                </div>
+                <div class="container" style="width: 30%;">
+                    <form action="" th:action="@{/setEnc}" method="POST">
+                        <div class="form-group mb-4">
+                            <label for="eProblem">设置问题:</label>
+                            <select class="form-control" id="eProblem" name="sysEncrypted">
+                                <option>您的名字是什么？</option>
+                				<option>您父亲的名字是什么？</option>
+               					<option>您母亲的名字是什么？</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="eAnswer">回答:</label>
+                            <input type="text" class="form-control" id="eAnswer" placeholder="请设置回答" name="sysAnswer">
+                        </div>
+                        <p style="color:red;" th:text="${chErr}" th:if="${not #strings.isEmpty(chErr)}"></p>
+                        <button type="submit" class="btn btn-primary">更改</button>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="https://unpkg.com/feather-icons@4.25.0/dist/feather.min.js"></script>
+    <script src="/asserts/js/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <div th:replace="~{commons/bar::scri}"></div>
+</body>
+
+</html>

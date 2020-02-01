@@ -1,0 +1,27 @@
+        .card{
+            width: 400px;
+            display: none;
+            position: fixed;
+            left: 40%;
+            top: 20%;
+            z-index: 101;
+        }
+        .card-header{
+            height: 30px; 
+            padding-left: 10px; 
+            padding-top: 5px; 
+            padding-bottom: 5px;
+        }
+        .card-footer{
+            height: 40px; 
+            border: none; 
+            background-color: white;
+        }
+        .background_div{
+            background-color:rgba(0,0,0,0.5);
+            position: absolute;
+            display: none;
+            left: 0;
+            top: 0;
+            z-index: 100;
+        }
