@@ -65,3 +65,7 @@ IDE环境： Eclipse
 数据库：MySql
 
 运行环境：JDK1.8版本
+
+
+
+注意：数据库存放在mysql文件夹中
