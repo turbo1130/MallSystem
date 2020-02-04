@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
-import com.mallsystem.bean.LeaveAMsg;
+import com.mallsystem.entities.LeaveAMsg;
 
 @Mapper
 public interface LeaveAMsgInfoMapper {

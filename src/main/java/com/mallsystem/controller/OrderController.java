@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.mallsystem.bean.Goods;
-import com.mallsystem.bean.GoodsName;
-import com.mallsystem.bean.Orders;
+import com.mallsystem.entities.Goods;
+import com.mallsystem.entities.GoodsName;
+import com.mallsystem.entities.Orders;
 import com.mallsystem.mapper.GoodsInfoMapper;
 import com.mallsystem.mapper.OrderInfoMapper;
 

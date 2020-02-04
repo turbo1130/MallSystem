@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.mallsystem.bean.LeaveAMsg;
+import com.mallsystem.entities.LeaveAMsg;
 import com.mallsystem.mapper.LeaveAMsgInfoMapper;
 
 

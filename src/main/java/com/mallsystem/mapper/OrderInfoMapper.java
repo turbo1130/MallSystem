@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import com.mallsystem.bean.Orders;
+import com.mallsystem.entities.Orders;
 
 @Mapper
 public interface OrderInfoMapper {

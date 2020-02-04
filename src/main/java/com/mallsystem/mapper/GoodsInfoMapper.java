@@ -8,8 +8,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import com.mallsystem.bean.Goods;
-import com.mallsystem.bean.GoodsName;
+import com.mallsystem.entities.Goods;
+import com.mallsystem.entities.GoodsName;
 
 @Mapper
 public interface GoodsInfoMapper {

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.mallsystem.bean.Goods;
+import com.mallsystem.entities.Goods;
 import com.mallsystem.mapper.ClassificationInfoMapper;
 import com.mallsystem.mapper.GoodsInfoMapper;
 

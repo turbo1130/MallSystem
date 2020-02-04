@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.mallsystem.bean.SysUser;
+import com.mallsystem.entities.SysUser;
 import com.mallsystem.mapper.UserInfoMapper;
 
 @Controller
