@@ -62,16 +62,7 @@
                         </div>
                         <div class="form-group">
                             <label for="gclass">类别</label>
-                            <select class="form-control" name="gdClass" id="gclass">
-                           		<option th:text="${good.gdClass}"></option>
-                                <option>泡菜类-贡盐泡菜</option>
-                                <option>泡菜类-韩国泡菜</option>
-                                <option>花椒类-青花椒</option>
-                                <option>花椒类-红花椒</option>
-                                <option>酱油类</option>
-                                <option>食用油类</option>
-                                <option>其他类</option>
-                            </select>
+                            <input class="form-control" name="gdClass" id="gclass" th:value="${good.gdClass}"></input>
                         </div>
                         <div class="form-group">
                             <label for="time">入库时间</label>

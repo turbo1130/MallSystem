@@ -40,30 +40,16 @@
                             </a>
                         </li>
                         <li id="nav-tier" class="nav-item">
-                            <a class="nav-link float-left" th:class="${activeUri=='classes'?'nav-link float-left active':'nav-link float-left'}" href="javascript:;">
+                            <a class="nav-link float-left" th:class="${activeUri=='classes'?'nav-link float-left active':'nav-link float-left'}">
                                 <i data-feather="file"></i>
                                 分类管理
                             </a>
                             <a class="float-right mt-2 mr-2 text-dark" href="javascript:;"><i data-feather="chevrons-down"></i></a>
                         </li>
                         <ul id="tier" class="nav-tier">
-                            <li id="2tier1">
-                                <a class="nav-tier-item" th:class="${activeCla=='1'?'nav-tier-item activeForA':'nav-tier-item'}" href="javascript:;">泡菜类<i data-feather="chevron-down"></i></a>
+                            <li th:each="sClass:${session.sClasses}">
+                                <a class="nav-tier-item" th:class="${activeCla==sClass.number ?'nav-tier-item activeForA':'nav-tier-item'}" href="javascript:;" th:href="@{/classes/}+${sClass.number}" th:text="${sClass.gdClass}">泡菜类</a>
                             </li>
-                            <ul id="2tier1-item" class="nav-2tier">
-                                <li><a class="nav-2tier-item" href="#" th:href="@{/gongyan}">贡盐泡菜</a></li>
-                                <li><a class="nav-2tier-item" href="#" th:href="@{/hanguo}">韩国泡菜</a></li>
-                            </ul>
-                            <li id="2tier2">
-                                <a class="nav-tier-item" th:class="${activeCla=='2'?'nav-tier-item activeForA':'nav-tier-item'}" href="javascript:;">花椒类<i data-feather="chevron-down"></i></a>
-                            </li>
-                            <ul id="2tier2-item" class="nav-2tier">
-                                <li><a class="nav-2tier-item" href="#" th:href="@{/hong}">红花椒</a></li>
-                                <li><a class="nav-2tier-item" href="#" th:href="@{/qing}">青花椒</a></li>
-                            </ul>
-                            <li><a class="nav-tier-item" th:class="${activeCla=='3'?'nav-tier-item activeForA':'nav-tier-item'}" href="#" th:href="@{/jiangyou}">酱油类</a></li>
-                            <li><a class="nav-tier-item" th:class="${activeCla=='4'?'nav-tier-item activeForA':'nav-tier-item'}" href="#" th:href="@{/shiyongyou}">食用油类</a></li>
-                            <li><a class="nav-tier-item" th:class="${activeCla=='5'?'nav-tier-item activeForA':'nav-tier-item'}" href="#" th:href="@{/other}">其他类</a></li>
                         </ul>
                         <li class="nav-item">
                             <a class="nav-link" th:class="${activeUri=='order'?'nav-link active':'nav-link'}" href="#" th:href="@{/order}">
@@ -107,12 +93,6 @@
         $(document).ready(function(){
             $("#nav-tier").click(function(){
                 $("#tier").stop().slideToggle();
-            })
-            $("#2tier1").click(function(){
-                $("#2tier1-item").stop().slideToggle();
-            })
-            $("#2tier2").click(function(){
-                $("#2tier2-item").stop().slideToggle();
             })
             
             //获取页面的实际高度和宽度

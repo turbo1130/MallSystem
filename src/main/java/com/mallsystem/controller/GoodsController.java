@@ -4,6 +4,8 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +14,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mallsystem.config.Classification;
 import com.mallsystem.entities.Goods;
+import com.mallsystem.entities.GoodsClass;
+import com.mallsystem.mapper.ClassificationInfoMapper;
 import com.mallsystem.mapper.GoodsInfoMapper;
 import com.mallsystem.mapper.OrderInfoMapper;
 
@@ -26,6 +31,8 @@ public class GoodsController {
 	GoodsInfoMapper goodsInfoMapper;
 	@Autowired
 	OrderInfoMapper orderInfoMapper;
+	@Autowired
+	ClassificationInfoMapper classificationInfoMapper;
 	
 	
 	// goods.html
@@ -98,43 +105,58 @@ public class GoodsController {
 	@GetMapping(value="/good/{id}")
 	public String goodIdEdit(@PathVariable("id")int id, Model model) {
 		Goods gd = goodsInfoMapper.getGood(id);
-		model.addAttribute("good",gd);
+		model.addAttribute("good", gd);
 		return "goodsEdit";
 	}
 	
 	// 对删除按钮的请求做处理
 	@PostMapping(value="/good/{id}")
-	public String goodIdDel(@PathVariable("id")int id) {
+	public String goodIdDel(@PathVariable("id")int id,HttpSession session) {
 		Goods gd = goodsInfoMapper.getGood(id);
 		int count  = orderInfoMapper.getOrderCountByGood(gd.getGdName());
 		if(count == 0) {
 			goodsInfoMapper.DelGoodById(id);
 		}
+		
+		Classification classification = new Classification();
+		Collection<GoodsClass> collClass = classification.classificatonMethod(classificationInfoMapper.getGoodsClass());
+		session.setAttribute("sClasses",collClass);
+		
 		return "redirect:/goods";
 	}
 	
 	// goodsAdd.html
 	// 对添加商品提交信息的请求进行处理
 	@PostMapping(value="/addGood")
-	public String goodAdd(Goods good) {
+	public String goodAdd(Goods good,HttpSession session) {
 		// 由于提交的日期后台在进行日期转换时会减一天，因此这里的操作时将日期加一天，转到正常日期
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(good.getGdTime());
 		cal.add(Calendar.DATE, 1);
 		good.setGdTime(cal.getTime());
 		goodsInfoMapper.AddGood(good);
+		
+		Classification classification = new Classification();
+		Collection<GoodsClass> collClass = classification.classificatonMethod(classificationInfoMapper.getGoodsClass());
+		session.setAttribute("sClasses",collClass);
+		
 		return "redirect:/goods";
 	}
 	
 	//goodsEdit.html
 	// 对编辑商品的信息提交的请求进行处理
 	@PostMapping(value="/editGood")
-	public String goodEidt(Goods good) {
+	public String goodEidt(Goods good,HttpSession session) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(good.getGdTime());
 		cal.add(Calendar.DATE, 1);
 		good.setGdTime(cal.getTime());
 		goodsInfoMapper.UpdateGood(good);
+		
+		Classification classification = new Classification();
+		Collection<GoodsClass> collClass = classification.classificatonMethod(classificationInfoMapper.getGoodsClass());
+		session.setAttribute("sClasses",collClass);
+		
 		return "redirect:/goods";
 	}
 }
