@@ -44,7 +44,7 @@
                     <h1 class="h2">客户订单</h1>
                 </div>
                 <div class="float-left">
-                    <a class="btn btn-success mb-2" href="javascript:;" th:href="@{/addOrder}">添加订单</a>
+                    <a class="btn btn-success mb-2" th:class=" ${session.addOp}=='1'?'btn btn-success mb-2':'btn btn-secondary mb-2' " href="javascript:;" th:href=" ${session.addOp}=='1'?'/addOrder':'javascript:;' ">添加订单</a>
                 </div>
                 <div class="float-right mt-2 mb-2">
                     <form class="form-inline" method="GET" action="" th:action="@{/order/searchStat}">
@@ -88,8 +88,8 @@
                                 <td th:text="${order.odExpNum==0?'':order.odExpNum}">201912280001</td>
                                 <td th:text="${#dates.format(order.odTime, 'yyyy-MM-dd')}">2019-12-28</td>
                                 <td>
-                                    <a class="btn btn-success btn-sm" href="javascript:;" th:href="@{/order/}+${order.odID}">编辑</a>
-                                    <button class="btn btn-danger btn-sm btnPopup" th:attr="del_Uri=@{/delOrder/}+${order.odID}">撤销</button>
+                                    <a class="btn btn-success btn-sm" th:class=" ${session.editOp}=='1'?'btn btn-success btn-sm':'btn btn-secondary btn-sm' " href="javascript:;" th:href=" ${session.editOp}=='1'?@{/order/}+${order.odID}:'javascript:;' ">编辑</a>
+                                    <button class="btn btn-danger btn-sm btnPopup" th:class=" ${session.delOp}=='1'?'btn btn-danger btn-sm btnPopup':'btn btn-secondary btn-sm' " th:attr="del_Uri=@{/delOrder/}+${order.odID}">撤销</button>
                                 </td>
                             </tr>
                         </tbody>

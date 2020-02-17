@@ -46,7 +46,7 @@
                     <h1 class="h2">商品管理</h1>
                 </div>
                 <div class="float-left">
-                    <a class="btn btn-success mb-2" th:href="@{/addGood}">添加商品</a>
+                    <a class="btn btn-success mb-2" th:class=" ${session.addOp}=='1'?'btn btn-success mb-2':'btn btn-secondary mb-2' " th:href=" ${session.addOp}=='1'?'/addGood':'javascript:;' ">添加商品</a>
                 </div>
                 <form action="" method="get" th:action="@{/goodSearch}">
 	                <div class="input-group mb-2 float-right" style="width: 400px;">
@@ -81,8 +81,8 @@
                                 <td th:text="${good.gdClass}">泡菜类 - 韩国泡菜</td>
                                 <td th:text="${#dates.format(good.gdTime, 'yyyy-MM-dd')}">2019-12-28</td>
                                 <td>
-                                    <a class="btn btn-primary btn-sm" href="javascript:;" th:href="@{/good/}+${good.gdID}">编辑</a>
-                                    <button th:attr="del_uri=@{/good/}+${good.gdID}" class="btn btn-danger btn-sm btnPopup">删除</button>
+                                    <a class="btn btn-primary btn-sm" th:class=" ${session.editOp}?'btn btn-primary btn-sm':'btn btn-secondary btn-sm' " href="javascript:;" th:href=" ${session.editOp}?@{/good/}+${good.gdID}:'javascript:;' ">编辑</a>
+                                    <button th:attr="del_uri=@{/good/}+${good.gdID}" class="btn btn-danger btn-sm btnPopup" th:class=" ${session.delOp}=='1'?'btn btn-danger btn-sm btnPopup':'btn btn-secondary btn-sm' ">删除</button>
                                 </td>
                             </tr>
                         </tbody>

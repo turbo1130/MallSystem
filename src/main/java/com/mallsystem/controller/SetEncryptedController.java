@@ -11,13 +11,29 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mallsystem.mapper.UserInfoMapper;
 
+/**
+ * Created with Eclipse
+ * @author 刘志远
+ * @see com.mallsystem.mapper.UserInfoMapper
+ * @since JDK1.8
+ * @version 1.0
+ * Description: 该类处理重置密保模块的所有请求
+ */
 @Controller
 public class SetEncryptedController {
 	
 	@Autowired
 	UserInfoMapper userInfoMapper;
 	
-	// 处理提交的密保重置表单
+	/**
+	 * Description: 处理重置密保发送的请求，处理表单，将其更新到数据库。
+	 * 	如果数据库没有更新成功，那么密保重置失败，否则重置成功。
+	 * @param sysUser
+	 * @param pwd
+	 * @param map
+	 * @return 返回String类型，值为setAccountPwd，可自动将setAccountPwd.html页面的代码传递
+	 * 	到浏览器进行解析
+	 */
 	@PostMapping(value="/setEnc")
 	public String setEnc(@RequestParam("sysEncrypted")String sysEnc,
 						 @RequestParam("sysAnswer")String sysAnswer,

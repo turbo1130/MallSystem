@@ -41,14 +41,14 @@
             <div th:replace="~{commons/bar::sidebar(activeUri='leaveAMsg')}"></div>
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2">
-                    <h1 class="h2">客户留言</h1>
+                    <h1 class="h2">客户反馈</h1>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th>客户</th>
-                                <th>留言</th>
+                                <th>反馈</th>
                                 <th>时间</th>
                                 <th>操作</th>
                             </tr>
@@ -59,7 +59,7 @@
                                 <td th:text="${forMsg.msgContent}">这是我的留言这是我的留言这是我的留言这是我的留言这是我的留言</td>
                                 <td style="width: 10%;" th:text="${#dates.format(forMsg.msgTime,'yyyy-MM-dd')}">2019-12-29</td>
                                 <td style="width: 10%;">
-                                    <button class="btn btn-danger btn-sm btnPopup" th:attr="del_msg=@{/delMsg/}+${forMsg.msgCustomer}">删除</button>
+                                    <button class="btn btn-danger btn-sm btnPopup" th:class=" ${session.delOp}=='1'?'btn btn-danger btn-sm btnPopup':'btn btn-secondary btn-sm' " th:attr="del_msg=@{/delMsg/}+${forMsg.msgCustomer}">删除</button>
                                 </td>
                             </tr>
                         </tbody>

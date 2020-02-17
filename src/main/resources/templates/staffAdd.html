@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>蜀南调味品商城后台管理系统</title>
+    <link rel="stylesheet" href="/asserts/css/bootstrap.min.css">
+    <link href="/asserts/css/bar.css" rel="stylesheet">
+    <link href="/asserts/css/popup.css" rel="stylesheet">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .container {
+            width: 60%;
+            margin-left: 0px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div th:replace="~{commons/bar::topbar}"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div th:replace="~{commons/bar::sidebar(activeUri='staff')}"></div>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2">
+                    <h1 class="h2">添加员工</h1>
+                </div>
+                <div class="container mb-4" style="width: 450px;">
+                    <form action="" th:action="@{/addStaff}" method="post">
+                        <div class="form-group">
+                            <label for="Name">员工姓名</label>
+                            <input id="Name" name="staffName" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="lName">登录名(不可重复)</label>
+                            <input id="lName" name="loginName" type="text" class="form-control">
+                        </div>
+                        <label for="juri">授予权限</label>
+                        <div class="form-inline mb-3" >
+                            <label>添加操作</label>
+                            <select id="juri" class="form-control custom-select-sm mr-2 ml-2" name="addOp">
+                                <option>有</option>
+                                <option>无</option>
+                            </select>
+                            <label>删除操作</label>
+                            <select class="form-control custom-select-sm mr-2 ml-2" name="delOp">
+                                <option>有</option>
+                                <option>无</option>
+                            </select>
+                            <label>编辑操作</label>
+                            <select class="form-control custom-select-sm mr-2 ml-2" name="editOp">
+                                <option>有</option>
+                                <option>无</option>
+                            </select>
+                        </div>
+                    	<p class="text-secondary"><strong>注意事项：</strong><br>1.员工账户创建成功密码默认为 123456 ；<br>
+                    	2.员工账户创建成功密保：您的名字是什么？默认答案为员工姓名；<br>
+                    	3.请通知员工及时重置密码和密保。
+                    	</p>
+                        <button type="submit" class="btn btn-primary">提交</button>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="https://unpkg.com/feather-icons@4.25.0/dist/feather.min.js"></script>
+    <script src="/asserts/js/jquery-3.4.1.min.js"></script>
+    <script>
+        feather.replace()
+        $(document).ready(function () {
+            $("#nav-tier").click(function () {
+                $("#tier").stop().slideToggle();
+            })
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>蜀南调味品商城后台管理系统</title>
+    <link rel="stylesheet" href="/asserts/css/bootstrap.min.css">
+    <link href="/asserts/css/bar.css" rel="stylesheet">
+    <link href="/asserts/css/popup.css" rel="stylesheet">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+        
+        .container {
+            width: 60%;
+            margin-left: 0px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div th:replace="~{commons/bar::topbar}"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div th:replace="~{commons/bar::sidebar(activeUri='staff')}"></div>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2">
+                    <h1 class="h2">员工管理</h1>
+                </div>
+                <div class="float-left">
+                    <a class="btn btn-success mb-3" href="javascript:;" th:href="@{/addStaff}">添加员工</a>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>员工编号</th>
+                                <th>员工姓名</th>
+                                <th>登录名</th>
+                                <th>添加权限</th>
+                                <th>删除权限</th>
+                                <th>编辑权限</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="staff:${staffs}">
+                                    <td scope="row" th:text="${staff.staffID}">001</td>
+                                    <td th:text="${staff.staffName}">刘志远</td>
+                                    <td th:text="${staff.loginName}">staff_01</td>
+                                    <td th:text="${staff.addOp}">无</td>
+                                    <td th:text="${staff.delOp}">无</td>
+                                    <td th:text="${staff.editOp}">有</td>
+                                    <td>
+                                        <a class="btn btn-primary btn-sm mr-2" th:href="@{/s/}+${staff.staffID}">更改权限</a>
+                                        <button id="del" class="btn btn-primary btn-sm btn-danger btnPopup" th:uri="@{/s/}+${staff.staffID}">删除员工</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div class="background_div" th:style="${showPop} == 1 ? 'display:block' : 'dispaly:none'"></div>
+    <div id="popup" class="card" style="width: 450px;" th:style="${showPop} == 1 ? 'width:450px; display:block' : 'width:450px; dispaly:none'">
+        <div class="card-header">
+            <div class="float-left"><h6> <i data-feather="alert-circle"></i> 更改权限</h6></div> 
+        </div>
+        <div class="card-body">
+            <div class="ml-2">
+                <form action="" th:action="@{/editStaff}" method="POST">
+                    <div class="form-group">
+                        <label for="ID">员工编号</label>
+                        <input type="number" class="form-control" id="ID" name="staffID" value="001" th:value="${sta.staffID}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginName">登录名</label>
+                        <input type="loginName" class="form-control" id="Name" name="loginName" value="staff_01" th:value="${sta.loginName}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="Name">员工姓名</label>
+                        <input type="text" class="form-control" id="Name" name="staffName" value="刘志远" th:value="${sta.staffName}">
+                    </div>
+                    <label>授予权限</label>
+                    <div class="form-inline">
+                        <label>添加操作</label>
+                        <select class="form-control custom-select-sm mr-2 ml-2" name="addOp">
+                            <option th:selected="${sta.addOp == '有' }">有</option>
+                            <option th:selected="${sta.addOp == '无' }">无</option>
+                        </select>
+                        <label>删除操作</label>
+                        <select class="form-control custom-select-sm mr-2 ml-2" name="delOp">
+                            <option th:selected="${sta.delOp == '有' }">有</option>
+                            <option th:selected="${sta.delOp == '无' }">无</option>
+                        </select>
+                        <label>编辑操作</label>
+                        <select class="form-control custom-select-sm mr-2 ml-2" name="editOp">
+                            <option th:selected="${sta.editOp == '有' }">有</option>
+                            <option th:selected="${sta.editOp == '无' }">无</option>
+                        </select>
+                    </div>
+                    <div class="mt-3 pt-0 pb-4">
+			            <button type="submit" class="btn btn-success btn-sm float-right ml-2">提交</button>
+			            <button id="cancel" class="btn btn-primary btn-sm float-right">取消</button>
+			        </div>
+                </form>
+            </div>
+        </div> 
+    </div>
+    
+    <div id="poPup" class="card">
+        <div class="card-header">
+            <div class="float-left"><h6> <i data-feather="alert-circle"></i> 提示</h6></div> 
+        </div>
+        <div class="card-body">
+            <div class="ml-2">
+                <h6>删除后不可恢复，请确定是否删除员工账户？</h6>
+            </div>
+        </div> 
+        <div class="card-footer mt-0 pt-0">
+            <button class="btn btn-danger btn-sm btnDel float-right ml-2">确定</button>
+            <button id="cancelDel" class="btn btn-primary btn-sm float-right">取消</button>
+        </div>
+    </div>
+    
+    <form id="formDel" method="POST"></form>
+    <script src="https://unpkg.com/feather-icons@4.25.0/dist/feather.min.js"></script>
+    <script src="/asserts/js/jquery-3.4.1.min.js"></script>
+    <script>
+        feather.replace()
+        $(document).ready(function(){
+            $("#nav-tier").click(function(){
+                $("#tier").stop().slideToggle();
+            })
+
+            var hei = $(document).height();
+			var wid = $(document).width();
+			$(".background_div").css("width",wid);
+			$(".background_div").css("height",hei);
+            $("#cancel").click(function(){
+                $("#popup").stop().fadeOut();
+                $(".background_div").stop().fadeOut();
+            })
+            
+            $(".btnPopup").click(function(){
+                $(".background_div").stop().fadeIn();
+                $("#poPup").stop().fadeIn();
+            })
+            $("#cancelDel").click(function(){
+                $("#poPup").stop().fadeOut();
+                $(".background_div").stop().fadeOut();
+            })
+            
+            $(".btnDel").click(function(){
+            	$("#formDel").attr("action",$("#del").attr("uri")).submit().removeAttr("action");
+            	return false;
+            })
+        });
+    </script>
+</body>
+
+</html>

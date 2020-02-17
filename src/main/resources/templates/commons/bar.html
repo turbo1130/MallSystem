@@ -60,7 +60,7 @@
                         <li class="nav-item">
                             <a class="nav-link" th:class="${activeUri=='leaveAMsg'?'nav-link active':'nav-link'}" th:href="@{/msges}">
                                 <i data-feather="users"></i>
-                                客户留言
+                                客户反馈
                             </a>
                         </li>
                     </ul>
@@ -70,6 +70,12 @@
                         <span>安全中心</span>
                     </h6>
                     <ul class="nav flex-column mb-2">
+                    	<li class="nav-item" th:style=" ${session.staff}=='0'?'display:none;':'' ">
+                            <a class="nav-link" th:class="${(activeUri=='staff')?'nav-link active':'nav-link'}" href="#" th:href="@{/staff}" >
+                                <i data-feather="file-text"></i>
+                                员工管理
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" th:class="${(activeSign=='pwd')?'nav-link active':'nav-link'}" href="#" th:href="@{/settingforCode}">
                                 <i data-feather="file-text"></i>

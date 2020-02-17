@@ -66,7 +66,7 @@
                                     <td th:text="${class.gdClass}">泡菜类 - 韩国泡菜</td>
                                     <td th:text="${#dates.format(class.gdTime, 'yyyy-MM-dd')}">2019-12-28</td>
                                     <td>
-                                        <a class="btn btn-primary btn-sm" th:href="@{/class/}+${class.gdID}">编辑</a>
+                                        <a class="btn btn-primary btn-sm" th:class=" ${session.editOp}=='1'?'btn btn-primary btn-sm':'btn btn-secondary btn-sm' " th:href=" ${session.editOp}=='1'?@{/class/}+${class.gdID}:'javascript:;' ">编辑</a>
                                     </td>
                                 </tr>
                             </tbody>

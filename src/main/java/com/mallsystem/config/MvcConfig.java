@@ -8,10 +8,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.mallsystem.config.LoginHandlerInterceptor;
 
+/**
+ * Created with Eclipse
+ * @author 刘志远
+ * @since JDK1.8
+ * @version 1.0
+ * Description: 配置SpringMVC访问页面，配置了之后遇到以下路径都会去templates目录下去找对应的网页
+ * 也会在此类的webMvcConfigurer()方法中addViewControllers()方法中去找到重定向路径，去访问对应的网页
+ */
 @Configuration
 public class MvcConfig implements WebMvcConfigurer{
-	// 配置SpringMVC访问页面，配置了之后遇到以下路径都会去templates目录下去找对应的网页
-	// 也会在此类的webMvcConfigurer()方法中addViewControllers()方法中去找到重定向路径，去访问对应的网页
 	
 		@Bean //将组建自动注册到容器中
 		public WebMvcConfigurer webMvcConfigurer() {

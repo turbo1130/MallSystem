@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
--- Host: localhost    Database: condimentssys
+-- Host: localhost    Database: mall
 -- ------------------------------------------------------
 -- Server version	8.0.18
 
@@ -65,7 +65,7 @@ CREATE TABLE `leaveamsg` (
 
 LOCK TABLES `leaveamsg` WRITE;
 /*!40000 ALTER TABLE `leaveamsg` DISABLE KEYS */;
-INSERT INTO `leaveamsg` VALUES ('aoluomi','一直吃这个牌子的生抽，味道好，比超市便宜，要是在发货包装上再防撞包装一下就更好了。','2020-01-21'),('cyi__','确实香，一分价钱一分货，这个花椒用来做菜肯定好吃！以后一定常来买，希望能多多进行优惠活动！','2020-01-17'),('hhhhhhh','作家冰心曾经说过：“成功的花，人们只惊羡她现时的明艳！然而当初她的芽儿，浸透了奋斗的泪泉，洒遍了牺牲的血雨。”','2020-01-22'),('wangfei','又快又好，快递真正送货上门，直接送到三楼。一直买太太乐鸡精，好吃。','2020-01-20'),('yikeX','温暖的滋味，精致的匠心，丰富而纯粹。一起传承中华美食，关心一日三餐。记得，要好好吃饭。','2020-01-18'),('zz85855','蚝油不错，包装的也严密，哈哈哈，辛苦快递小哥了，人很好，必须给点赞','2020-01-18'),('图匠','每次搞活动必囤的辣椒酱，酸汤肥牛、擂椒皮蛋、凉拌木耳必备啊！谢谢客服的耐心解答，这次选了礼盒装就为了中间其中有三个特辣，在我家这也属于快消品，娃中午要在学校吃饭，带去学校简直下饭神器，嘿嘿。','2020-01-21'),('明天8','海天招牌好好吃，每餐必备，满满的都是料，购买N次啦，还是没吃够，吃完继续回购，包装很是完美，快递也很给力！','2020-01-20'),('清出于谭','宝贝包装很好，收到一点都没有漏泄破碎，谢谢，至于味道，我就是在别人处嚐了味才买的，当然是喜欢的喽。','2020-01-21'),('漫yu雨','常购此款，只要有优惠就买！大品牌值得信赖！炒菜特别好','2020-01-21'),('端木18','一个薄薄的纸箱子装来到，没有任何保护，变形了，不满意！不知道是不是正品，没有下次了。','2020-02-03');
+INSERT INTO `leaveamsg` VALUES ('aoluomi','一直吃这个牌子的生抽，味道好，比超市便宜，要是在发货包装上再防撞包装一下就更好了。','2020-01-21'),('cyi__','确实香，一分价钱一分货，这个花椒用来做菜肯定好吃！以后一定常来买，希望能多多进行优惠活动！','2020-01-17'),('hhhhhhh','作家冰心曾经说过：“成功的花，人们只惊羡她现时的明艳！然而当初她的芽儿，浸透了奋斗的泪泉，洒遍了牺牲的血雨。”','2020-01-22'),('wangfei','又快又好，快递真正送货上门，直接送到三楼。一直买太太乐鸡精，好吃。','2020-01-20'),('yikeX','温暖的滋味，精致的匠心，丰富而纯粹。一起传承中华美食，关心一日三餐。记得，要好好吃饭。','2020-01-18'),('zz85855','蚝油不错，包装的也严密，哈哈哈，辛苦快递小哥了，人很好，必须给点赞','2020-01-18'),('和my','垃圾，从来没有见过这么慢的快递','2020-02-12'),('图匠','每次搞活动必囤的辣椒酱，酸汤肥牛、擂椒皮蛋、凉拌木耳必备啊！谢谢客服的耐心解答，这次选了礼盒装就为了中间其中有三个特辣，在我家这也属于快消品，娃中午要在学校吃饭，带去学校简直下饭神器，嘿嘿。','2020-01-21'),('明天8','海天招牌好好吃，每餐必备，满满的都是料，购买N次啦，还是没吃够，吃完继续回购，包装很是完美，快递也很给力！','2020-01-20'),('清出于谭','宝贝包装很好，收到一点都没有漏泄破碎，谢谢，至于味道，我就是在别人处嚐了味才买的，当然是喜欢的喽。','2020-01-21'),('漫yu雨','常购此款，只要有优惠就买！大品牌值得信赖！炒菜特别好','2020-01-21'),('端木18','一个薄薄的纸箱子装来到，没有任何保护，变形了，不满意！不知道是不是正品，没有下次了。','2020-02-03');
 /*!40000 ALTER TABLE `leaveamsg` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -100,6 +100,35 @@ INSERT INTO `orders` VALUES (2020200001,'yikeX','腌制黄瓜','2袋','已付款
 UNLOCK TABLES;
 
 --
+-- Table structure for table `staff`
+--
+
+DROP TABLE IF EXISTS `staff`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `staff` (
+  `staffID` int(11) NOT NULL AUTO_INCREMENT,
+  `staffName` varchar(20) NOT NULL,
+  `loginName` varchar(20) NOT NULL,
+  `addOp` varchar(10) NOT NULL,
+  `delOp` varchar(10) NOT NULL,
+  `editOp` varchar(10) NOT NULL,
+  PRIMARY KEY (`staffID`),
+  UNIQUE KEY `loginName` (`loginName`)
+) ENGINE=InnoDB AUTO_INCREMENT=20200003 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `staff`
+--
+
+LOCK TABLES `staff` WRITE;
+/*!40000 ALTER TABLE `staff` DISABLE KEYS */;
+INSERT INTO `staff` VALUES (20200001,'莫俊杰','staff_mo','无','无','无'),(20200002,'李子维','staff_li','有','有','有');
+/*!40000 ALTER TABLE `staff` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `sysuser`
 --
 
@@ -121,7 +150,7 @@ CREATE TABLE `sysuser` (
 
 LOCK TABLES `sysuser` WRITE;
 /*!40000 ALTER TABLE `sysuser` DISABLE KEYS */;
-INSERT INTO `sysuser` VALUES ('admin','123456','您的名字是什么？','刘志远');
+INSERT INTO `sysuser` VALUES ('admin','123456','您的名字是什么？','刘志远'),('staff_li','123456','您的名字是什么？','李子维'),('staff_mo','123456','您的名字是什么？','莫俊杰');
 /*!40000 ALTER TABLE `sysuser` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -134,4 +163,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-03 17:37:02
+-- Dump completed on 2020-02-17 22:17:51

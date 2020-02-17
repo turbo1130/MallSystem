@@ -1,5 +1,12 @@
 package com.mallsystem.entities;
 
+/**
+ * Created with Eclipse
+ * @author 刘志远
+ * @since JDK1.8
+ * @version 1.0
+ * Description: 该类是用于存储登录用户的登录密码密保信息的普通类，其中有getter/setter/toString方法
+ */
 public class SysUser {
 	private String sysName;
 	private String sysPwd;
