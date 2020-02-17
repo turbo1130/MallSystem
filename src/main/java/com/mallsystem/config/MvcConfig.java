@@ -10,7 +10,7 @@ import com.mallsystem.config.LoginHandlerInterceptor;
 
 /**
  * Created with Eclipse
- * @author 刘志远
+ * @author heroC
  * @since JDK1.8
  * @version 1.0
  * Description: 配置SpringMVC访问页面，配置了之后遇到以下路径都会去templates目录下去找对应的网页

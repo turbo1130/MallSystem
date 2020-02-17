@@ -10,7 +10,7 @@ import com.mallsystem.entities.LeaveAMsg;
 
 /**
  * Created with Eclipse
- * @author 刘志远
+ * @author heroC
  * @since JDK1.8
  * @version 1.0
  * Description: 该类实现了对用户信息反馈的增删改查的相关处理

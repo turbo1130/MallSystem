@@ -23,7 +23,7 @@ import com.mallsystem.mapper.OrderInfoMapper;
 
 /**
  * Created with Eclipse
- * @author 刘志远
+ * @author heroC
  * @see com.mallsystem.mapper.ClassificationInfoMapper
  * @see com.mallsystem.mapper.GoodsInfoMapper
  * @see com.mallsystem.mapper.OrderInfoMapper

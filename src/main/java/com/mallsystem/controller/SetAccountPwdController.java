@@ -12,7 +12,7 @@ import com.mallsystem.mapper.UserInfoMapper;
 
 /**
  * Created with Eclipse
- * @author 刘志远
+ * @author heroC
  * @see com.mallsystem.mapper.UserInfoMapper
  * @since JDK1.8
  * @version 1.0

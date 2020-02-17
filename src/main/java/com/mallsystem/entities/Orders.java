@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * Created with Eclipse
- * @author 刘志远
+ * @author heroC
  * @since JDK1.8
  * @version 1.0
  * Description: 该类是用于存储订单信息的普通类，其中有getter/setter/toString方法

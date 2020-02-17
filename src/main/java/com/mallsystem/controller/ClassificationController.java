@@ -21,7 +21,7 @@ import com.mallsystem.mapper.GoodsInfoMapper;
 
 /**
  * Created with Eclipse
- * @author 刘志远
+ * @author heroC
  * @see com.mallsystem.config.Classification
  * @see com.mallsystem.mapper.ClassificationInfoMapper
  * @see com.mallsystem.mapper.GoodsInfoMapper

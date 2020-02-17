@@ -12,7 +12,7 @@ import com.mallsystem.entities.Staff;
 
 /**
  * Created with Eclipse
- * @author 刘志远
+ * @author heroC
  * @since JDK1.8
  * @version 1.0
  * Description: 该类实现了对员工信息的增删改查的相关处理

@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created with Eclipse
- * @author 刘志远
+ * @author heroC
  * @since JDK1.8
  * @version 1.0
  * Description: 该类的作用就是用于登录检查，继承了HandlerInterceptor拦截器

@@ -13,7 +13,7 @@ import com.mallsystem.entities.GoodsName;
 
 /**
  * Created with Eclipse
- * @author 刘志远
+ * @author heroC
  * @since JDK1.8
  * @version 1.0
  * Description: 该类实现了对商品增删改查的相关处理
